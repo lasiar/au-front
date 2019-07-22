@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Game from "../components/game/Game";
+import Game from "../components/game/play/GameLayout";
 
 export default {
   components: {

@@ -28,13 +28,23 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   {
-    path: "/",
+    path: "/game",
     name: "mainPage",
     component: () => import("../views/Game"),
     meta: {
-      title: "игра",
+      title: "Игра",
       roles: ["user"]
-    }
+    },
+    children: [
+      {
+        path: "sessions",
+        name: "sessions",
+        meta: {
+          title: "Сесии игр",
+          roles: ["user"]
+        }
+      }
+    ]
   },
   {
     path: "/admin",
@@ -76,10 +86,10 @@ router.beforeEach(async (to, from, next) => {
   // determine whether the user has logged in
   const hasToken = getToken();
   if (hasToken) {
-    if (to.path === "/login") {
+    if (to.path === "/login" || to.path === "/") {
       // if is logged in, redirect to the home page
       NProgress.done();
-      next({ path: "/", replace: false });
+      next({ path: "/game", replace: false });
     } else {
       // determine whether the user has obtained his permission roles through getInfo
       const hasRoles =
