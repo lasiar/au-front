@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-layout>
-      <v-flex xs5 v-for="(length, index) in listLength" :key="index">
+    <v-layout row wrap>
+      <v-flex xs6 v-for="(length, index) in listLength" :key="index">
         <board
           :length="length"
           :list="leaderBoards.filter(item => item.length === length)"

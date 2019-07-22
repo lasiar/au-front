@@ -19,7 +19,10 @@
       <v-divider vertical></v-divider>
 
       <v-flex xs12 md6>
-        <v-card-text>
+        <v-card-text
+          style=" height: 300px;
+  overflow-y: auto;"
+          >>
           <div
             v-if="currentSession.id === undefined"
             key="title"
