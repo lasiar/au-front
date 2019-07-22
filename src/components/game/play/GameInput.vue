@@ -2,7 +2,7 @@
   <v-form>
     <v-text-field
       v-model="input"
-      :rules="rules"
+      :rules="[rules.required, rules.digitMask]"
       :label="`Введите ${length}-значное число`"
       :counter="length"
       :maxlength="length"

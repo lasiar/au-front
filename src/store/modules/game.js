@@ -1,8 +1,15 @@
-import { getSessions, getHistory, guess } from "../../api/game";
+import {
+  getSessions,
+  getHistory,
+  guess,
+  newSession,
+  getLeaderboard
+} from "../../api/game";
 
 const state = {
   sessions: [],
-  history: []
+  history: [],
+  leaderboard: []
 };
 
 const getters = {};
@@ -76,9 +83,40 @@ const actions = {
   },
 
   /**
+   * Создание новой игровой сесии
+   * @param commit
+   * @param data {{length: Number}} длина загоднного числа
+   * @return {Promise<any>}
+   */
+  newSession({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      newSession(data)
+        .then(response => {
+          commit("PUSH_SESSIONS", response);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+
+  getLeaderboard({ commit }) {
+    return new Promise((resolve, reject) => {
+      getLeaderboard()
+        .then(response => {
+          commit("SET_LEADERBOARDS", response);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+  /**
    * Добавляет значение в "историю"
-   * @param commit {{id_session: number, date_time: string, input: string }}
-   * @param history
+   * @param commit
+   * @param history {{id_session: number, date_time: string, input: string }}
    */
   addHistory({ commit }, history) {
     commit("PUSH_HISTORY", history);
@@ -89,11 +127,17 @@ const mutations = {
   SET_SESSIONS: (state, sessions) => {
     state.sessions = sessions;
   },
+  PUSH_SESSIONS: (state, session) => {
+    state.sessions.push(session);
+  },
   SET_HISTORY: (state, history) => {
     state.history = history;
   },
   PUSH_HISTORY: (state, history) => {
     state.history.push(history);
+  },
+  SET_LEADERBOARDS: (state, leaderboards) => {
+    state.leaderboard = leaderboards;
   }
 };
 

@@ -38,3 +38,27 @@ export function guess(data) {
     data
   });
 }
+
+/**
+ * Создание новой сесии
+ * @param data {{length: Number}} длина загоднного числа
+ * @return {AxiosPromise}
+ */
+export function newSession(data) {
+  return request({
+    url: "/game/new",
+    method: "post",
+    data
+  });
+}
+
+/**
+ * Получение списка лидеров
+ * @return {AxiosPromise}
+ */
+export function getLeaderboard() {
+  return request({
+    url: "/game/leaderboard",
+    method: "get"
+  });
+}

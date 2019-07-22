@@ -29,14 +29,14 @@ export function bullAndCow(input, secret) {
  * Массив функции для фильтра пользовательского ввода
  * @type {Array.<Function>} Функции для фильтра
  */
-export const rules = [
-  function required(value) {
+export const rules = {
+  required(value) {
     return !!value || "Заполните поле. ";
   },
-  function digitMask(value) {
+  digitMask(value) {
     return /^[0-9]*$/.test(value) || "Только цифры";
   }
-];
+};
 
 /**
  * Форматирует дату

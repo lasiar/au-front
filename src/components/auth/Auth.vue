@@ -1,7 +1,7 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm8 md4>
-      <v-tabs v-model="active" color="primary" dark slider-color="white">
+      <v-tabs v-model="disabled" color="primary" dark slider-color="white">
         <v-tab> Вход </v-tab>
         <v-tab> Регистрация </v-tab>
         <v-tab-item>

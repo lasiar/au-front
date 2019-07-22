@@ -3,6 +3,8 @@
     <v-toolbar card color="grey lighten-3">
       <v-icon>mdi-silverware</v-icon>
       <v-toolbar-title>Не завершенные игры</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <session-new @newSession="newSessionHanding"></session-new>
     </v-toolbar>
     <v-layout>
       <v-flex>
@@ -42,9 +44,10 @@ import { mapState, mapActions } from "vuex";
 import GameInput from "./GameInput";
 import Game from "./Game";
 import GameSessions from "./GameSessions";
+import SessionNew from "./SessionNew";
 
 export default {
-  components: { GameSessions, GameInput, Game },
+  components: { SessionNew, GameSessions, GameInput, Game },
   data: () => ({
     currentSession: {}
   }),
@@ -65,8 +68,11 @@ export default {
     async guessHandler(input) {
       await this.guess({ idSession: this.currentSession.id, text: input });
     },
-    selectSession(val) {
-      this.currentSession = val;
+    selectSession(session) {
+      this.currentSession = session;
+    },
+    newSessionHanding(session) {
+      this.currentSession = session;
     }
   }
 };

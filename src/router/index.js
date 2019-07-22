@@ -34,18 +34,18 @@ export const asyncRoutes = [
     meta: {
       title: "Игра",
       roles: ["user"]
-    },
-    children: [
-      {
-        path: "sessions",
-        name: "sessions",
-        meta: {
-          title: "Сесии игр",
-          roles: ["user"]
-        }
-      }
-    ]
+    }
   },
+  {
+    path: "/leaders",
+    name: "leaders",
+    component: () => import("../views/LeaderBoard"),
+    meta: {
+      title: "Лидеры",
+      roles: ["user"]
+    }
+  },
+
   {
     path: "/admin",
     name: "admin",
