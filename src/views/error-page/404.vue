@@ -1,0 +1,11 @@
+<template>
+  <div>Ooops 404!</div>
+</template>
+
+<script>
+export default {
+  name: "notFound"
+};
+</script>
+
+<style scoped></style>
