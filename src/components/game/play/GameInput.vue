@@ -1,23 +1,24 @@
 <template>
-  <v-form>
-    <v-text-field
-      v-model="input"
-      :rules="[rules.required, rules.digitMask]"
-      :label="`Введите ${length}-значное число`"
-      :counter="length"
-      :maxlength="length"
-    ></v-text-field>
-    <v-btn
-      :loading="loading"
-      @click="$emit('sendGuess', input)"
-      class="white--text"
-      color="green darken-1"
-      depressed
-    >
-      Save
-      <v-icon right>mdi-content-save</v-icon>
-    </v-btn>
-  </v-form>
+  <div>
+    <v-layout align-center>
+      <v-flex xs6>
+        <v-text-field
+          v-model="input"
+          :rules="[rules.required, rules.digitMask]"
+          :label="`Введите ${length}-значное число`"
+          :counter="length"
+          :maxlength="length"
+          :error="error"
+        ></v-text-field>
+      </v-flex>
+      <v-flex xs5>
+        <v-btn :loading="loading" @click="sendGuess" depressed>
+          Отгадать
+          <v-icon right>mdi-content-save</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
@@ -33,10 +34,18 @@ export default {
     }
   },
   data: () => ({
+    error: false,
     loading: false,
     input: "",
     rules: rules
-  })
+  }),
+  methods: {
+    sendGuess() {
+      this.$emit("sendGuess", this.input);
+      this.input = "";
+      this.error = false;
+    }
+  }
 };
 </script>
 

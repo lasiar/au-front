@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs6>
+    <v-flex xs6 align-center justify-end>
       <v-text-field
         v-model="input"
         @update:error="errorHanding"

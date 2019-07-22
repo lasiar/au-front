@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="ma-2">
     <v-toolbar card color="grey lighten-3">
       <v-icon>mdi-silverware</v-icon>
       <v-toolbar-title>Не завершенные игры</v-toolbar-title>
@@ -22,7 +22,7 @@
         <v-card-text
           style=" height: 300px;
   overflow-y: auto;"
-          >>
+        >
           <div
             v-if="currentSession.id === undefined"
             key="title"
