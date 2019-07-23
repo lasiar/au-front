@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-2, ma-3">
+  <v-card class="elevation-10, ma-3">
     <v-card-title v-text="`Сложность ${length} цифры`"> </v-card-title>
     <v-data-table hide-actions :headers="headers" :items="limitationList">
       <template v-slot:items="props">

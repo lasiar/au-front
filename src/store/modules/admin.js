@@ -1,4 +1,4 @@
-import { getUsers } from "../../api/admin";
+import { getUsers, changeUser } from "../../api/admin";
 
 const state = {
   users: []
@@ -12,6 +12,18 @@ const actions = {
       getUsers()
         .then(response => {
           commit("SET_USERS", response);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  },
+  changeUser({ dispatch }, user) {
+    return new Promise((resolve, reject) => {
+      changeUser(user)
+        .then(response => {
+          dispatch(getUsers());
           resolve(response);
         })
         .catch(error => {
