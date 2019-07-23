@@ -34,14 +34,17 @@
         </transition>
       </transition>
     </v-content>
+    <main-error></main-error>
   </v-app>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import MainError from "./components/error/error";
 
 export default {
   name: "App",
+  components: { MainError },
   data() {
     return {
       drawer: null

@@ -5,6 +5,7 @@ import permission from "./modules/permision";
 import getters from "./getters";
 import admin from "./modules/admin";
 import game from "./modules/game";
+import info from "./modules/info";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     permission,
     admin,
     getters,
-    game
+    game,
+    info
   }
 });

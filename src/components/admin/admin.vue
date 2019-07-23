@@ -16,7 +16,6 @@
             @save="save(props.item)"
             @cancel="cancel"
             @open="open"
-            @close="close"
           >
             {{ props.item.perm_mask }}
             <template v-slot:input>

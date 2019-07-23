@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store/store";
 
 // create an axios instance
 const service = axios.create({
@@ -36,6 +37,11 @@ service.interceptors.response.use(
     return res;
   },
   error => {
+    store.dispatch("info/setError", {
+      text: error,
+      subText: error.response.data,
+      show: true
+    });
     return Promise.reject(error);
   }
 );
