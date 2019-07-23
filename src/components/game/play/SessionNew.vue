@@ -1,6 +1,6 @@
 <template>
-  <v-layout>
-    <v-flex xs6 align-center justify-end>
+  <v-layout align-center>
+    <v-flex xs6 align-center>
       <v-text-field
         v-model="input"
         @update:error="errorHanding"
@@ -24,12 +24,12 @@ export default {
   name: "SessionNew",
   data: () => ({
     input: "",
-    error: true,
+    isError: true,
     rules: rules
   }),
   computed: {
     disabled() {
-      return this.error;
+      return this.isError;
     }
   },
   methods: {
@@ -37,7 +37,7 @@ export default {
       newSession: "game/newSession"
     }),
     errorHanding(val) {
-      this.error = val;
+      this.isError = val;
     },
     async newSessionHanding() {
       const session = await this.newSession({ length: parseInt(this.input) });

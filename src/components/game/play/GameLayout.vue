@@ -4,7 +4,6 @@
       <v-icon>mdi-silverware</v-icon>
       <v-toolbar-title>Не завершенные игры</v-toolbar-title>
       <v-spacer></v-spacer>
-      <session-new @newSession="newSessionHanding"></session-new>
     </v-toolbar>
     <v-layout>
       <v-flex>
@@ -25,7 +24,6 @@
         >
           <div
             v-if="currentSession.id === undefined"
-            key="title"
             class="title font-weight-light grey--text pa-3 text-xs-center"
           >
             Выберите игру
@@ -35,9 +33,19 @@
       </v-flex>
     </v-layout>
     <v-divider></v-divider>
-    <v-card-actions v-if="currentSession.id !== undefined">
-      <v-spacer></v-spacer>
-      <game-input :length="lengthSecret" @sendGuess="guessHandler"></game-input>
+    <v-card-actions>
+      <v-layout align-center justify-space-between row>
+        <v-flex xs6>
+          <session-new @newSession="newSessionHanding"></session-new>
+        </v-flex>
+        <v-flex justify-space-between xs6>
+          <game-input
+            v-if="currentSession.id !== undefined"
+            :length="lengthSecret"
+            @sendGuess="guessHandler"
+          ></game-input>
+        </v-flex>
+      </v-layout>
     </v-card-actions>
   </v-card>
 </template>

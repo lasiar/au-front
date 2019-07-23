@@ -13,8 +13,8 @@ service.interceptors.request.use(
     return config;
   },
   error => {
-    // do something with request error
-    // console.log(error); // for debug
+    // do something with request isError
+    // console.log(isError); // for debug
     return Promise.reject(error);
   }
 );

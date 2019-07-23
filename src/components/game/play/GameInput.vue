@@ -8,12 +8,13 @@
           :label="`Введите ${length}-значное число`"
           :counter="length"
           :maxlength="length"
+          :error="true"
           @update:error="errorHanding"
         ></v-text-field>
       </v-flex>
       <v-flex xs5>
         <v-btn
-          :disabled="error"
+          :disabled="isError"
           :loading="loading"
           @click="sendGuess"
           depressed
@@ -39,7 +40,8 @@ export default {
     }
   },
   data: () => ({
-    error: false,
+    error: true,
+    isError: false,
     loading: false,
     input: "",
     rules: rules
@@ -50,7 +52,7 @@ export default {
       this.input = "";
     },
     errorHanding(error) {
-      this.error = error;
+      this.isError = error;
     }
   }
 };
