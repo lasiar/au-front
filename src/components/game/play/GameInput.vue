@@ -8,7 +8,6 @@
           :label="`Введите ${length}-значное число`"
           :counter="length"
           :maxlength="length"
-          :error="true"
           @update:error="errorHanding"
         ></v-text-field>
       </v-flex>
@@ -41,7 +40,7 @@ export default {
   },
   data: () => ({
     error: true,
-    isError: false,
+    isError: true,
     loading: false,
     input: "",
     rules: rules
