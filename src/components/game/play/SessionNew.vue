@@ -4,7 +4,7 @@
       <v-text-field
         v-model="input"
         @update:error="errorHanding"
-        :rules="[rules.required, rules.digitMask]"
+        :rules="[rules.required, rules.digitMask, rules.notZero]"
       >
       </v-text-field>
     </v-flex>

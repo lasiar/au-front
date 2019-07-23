@@ -31,10 +31,13 @@ export function bullAndCow(input, secret) {
  */
 export const rules = {
   required(value) {
-    return !!value || "Заполните поле. ";
+    return !!value || "Заполните поле";
   },
   digitMask(value) {
     return /^[0-9]*$/.test(value) || "Только цифры";
+  },
+  notZero(value) {
+    return parseInt(value) === 0 ? "Не должно быть равно нулю" : true;
   }
 };
 
