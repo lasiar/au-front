@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div
+    style=" height: 300px;
+  overflow-y: auto;"
+    ref="chat"
+  >
     <ul>
       <template v-for="(lap, i) in historyHumanDT">
         <li :key="lap.date">{{ lap.date_time }} {{ user }}: {{ lap.input }}</li>
@@ -44,9 +48,19 @@ export default {
     }),
     bullAndCow(input, secret) {
       return bullAndCow(input, secret);
+    },
+    scrollToEnd() {
+      const chat = this.$refs["chat"];
+      chat.scrollTop = chat.scrollHeight;
     }
   },
   watch: {
+    history: {
+      immediate: true,
+      handler() {
+        this.scrollToEnd();
+      }
+    },
     currentSession: {
       immediate: true,
       handler(newVal) {

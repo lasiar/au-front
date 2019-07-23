@@ -1,6 +1,6 @@
 <template>
-  <v-card class="ma-2">
-    <v-toolbar card color="grey lighten-3">
+  <v-card class="ma-2 elevation-10">
+    <v-toolbar primary card color="primary">
       <v-icon>mdi-silverware</v-icon>
       <v-toolbar-title>Не завершенные игры</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -18,18 +18,13 @@
       <v-divider vertical></v-divider>
 
       <v-flex xs12 md6>
-        <v-card-text
-          style=" height: 300px;
-  overflow-y: auto;"
+        <div
+          v-if="currentSession.id === undefined"
+          class="title font-weight-light grey--text pa-3 text-xs-center"
         >
-          <div
-            v-if="currentSession.id === undefined"
-            class="title font-weight-light grey--text pa-3 text-xs-center"
-          >
-            Выберите игру
-          </div>
-          <game v-else :current-session="currentSession"></game>
-        </v-card-text>
+          Выберите игру
+        </div>
+        <game v-else :current-session="currentSession"></game>
       </v-flex>
     </v-layout>
     <v-divider></v-divider>
