@@ -45,11 +45,11 @@ export const rules = {
  */
 export function dateFormatter(dt) {
   const date = new Date(dt);
-  let day = date.getDate();
-  let monthNumber = date.getMonth() + 1;
-  let year = date.getFullYear();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let second = date.getSeconds();
+  const day = date.getDate();
+  const monthNumber = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const second = date.getSeconds();
   return `${hours}:${minutes}:${second} ${day}-${monthNumber}-${year}`;
 }
