@@ -8,11 +8,16 @@
           :label="`Введите ${length}-значное число`"
           :counter="length"
           :maxlength="length"
-          :error="error"
+          @update:error="errorHanding"
         ></v-text-field>
       </v-flex>
       <v-flex xs5>
-        <v-btn :loading="loading" @click="sendGuess" depressed>
+        <v-btn
+          :disabled="error"
+          :loading="loading"
+          @click="sendGuess"
+          depressed
+        >
           Отгадать
           <v-icon right>mdi-content-save</v-icon>
         </v-btn>
@@ -43,7 +48,9 @@ export default {
     sendGuess() {
       this.$emit("sendGuess", this.input);
       this.input = "";
-      this.error = false;
+    },
+    errorHanding(error) {
+      this.error = error;
     }
   }
 };
