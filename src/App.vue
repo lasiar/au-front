@@ -22,6 +22,9 @@
         <span class="font-weight-light">Коровы и быки</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <div class="mr-1">
+        {{ user.name }}
+      </div>
       <button @click="logout" v-if="hasRoles">Выход</button>
     </v-toolbar>
     <v-content>
@@ -46,6 +49,7 @@ export default {
   },
   computed: {
     ...mapState({
+      user: state => state.auth.user,
       routes: state =>
         state.permission.routes.filter(
           route => route.meta.title && route.hidden !== true
