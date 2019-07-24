@@ -1,7 +1,7 @@
 <template>
   <v-list dense subheader shaped>
     <v-subheader>Сессии</v-subheader>
-    <v-list-item-group mandatory v-model="sessions" color="primary">
+    <v-list-item-group mandatory color="primary">
       <v-list-item
         @click="$emit('selectSession', session)"
         v-for="(session, i) in sessions"

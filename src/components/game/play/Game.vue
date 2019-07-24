@@ -1,18 +1,28 @@
 <template>
-  <div
-    style=" height: 300px;
+  <v-list dense>
+    <div
+      ref="chat"
+      style=" height: 300px;
   overflow-y: auto;"
-    ref="chat"
-  >
-    <ul>
+    >
       <template v-for="(lap, i) in historyHumanDT">
-        <li :key="lap.date">{{ lap.date_time }} {{ user }}: {{ lap.input }}</li>
-        <li :key="i">
-          Комьютер: {{ bullAndCow(lap.input, currentSession.secret) }}
-        </li>
+        <div :key="i">
+          <v-list-item>
+            <v-list-item-content>
+              {{ lap.date_time }} {{ user }}: {{ lap.input }}
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content
+              v-text="
+                `Комьютер: ${bullAndCow(lap.input, currentSession.secret)}`
+              "
+            ></v-list-item-content>
+          </v-list-item>
+        </div>
       </template>
-    </ul>
-  </div>
+    </div>
+  </v-list>
 </template>
 
 <script>
@@ -63,7 +73,6 @@ export default {
       }
     },
     currentSession: {
-      immediate: true,
       handler(newVal) {
         this.getHistory(newVal.id);
       }
