@@ -57,8 +57,9 @@ export default {
   watch: {
     history: {
       immediate: true,
-      handler() {
-        this.scrollToEnd();
+      async handler() {
+        const session = await this.scrollToEnd();
+        this.$emit("loadSession", session);
       }
     },
     currentSession: {

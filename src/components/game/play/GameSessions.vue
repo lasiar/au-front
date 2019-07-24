@@ -1,14 +1,17 @@
 <template>
-  <v-list>
-    <template v-for="session in sessions">
-      <v-list-tile
+  <v-list dense subheader shaped>
+    <v-subheader>Сессии</v-subheader>
+    <v-list-item-group mandatory v-model="sessions" color="primary">
+      <v-list-item
         @click="$emit('selectSession', session)"
-        ripple
-        :key="session.id"
+        v-for="(session, i) in sessions"
+        :key="i"
       >
-        Игра {{ session.id }} сложность {{ session.secret.length }}
-      </v-list-tile>
-    </template>
+        <v-list-item-content
+          v-text="`Игра ${session.id} сложность ${session.secret.length}`"
+        ></v-list-item-content>
+      </v-list-item>
+    </v-list-item-group>
   </v-list>
 </template>
 

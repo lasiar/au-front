@@ -1,6 +1,6 @@
 <template>
   <v-card class="ma-2 elevation-10">
-    <v-toolbar primary card color="primary">
+    <v-toolbar dark flat primary color="indigo">
       <v-icon>mdi-silverware</v-icon>
       <v-toolbar-title>Не завершенные игры</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -31,9 +31,12 @@
     <v-card-actions>
       <v-layout align-center justify-space-between row>
         <v-flex xs6>
-          <session-new @newSession="newSessionHanding"></session-new>
+          <session-new
+            class="ml-1"
+            @newSession="newSessionHanding"
+          ></session-new>
         </v-flex>
-        <v-flex justify-space-between xs6>
+        <v-flex xs6>
           <game-input
             v-if="currentSession.id !== undefined"
             :length="lengthSecret"

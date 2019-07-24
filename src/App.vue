@@ -2,21 +2,23 @@
   <v-app>
     <v-navigation-drawer v-model="drawer" clipped fixed app v-if="hasRoles">
       <v-list dense>
-        <v-list-tile
+        <v-list-item
           route
           v-for="item in routesData"
           :key="item.path"
           :to="item.path"
           avatar
         >
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.meta.title"> </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.meta.title"> </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar clipped-left fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-app-bar color="indigo" dark app clipped-left>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+        <v-icon>menu</v-icon>
+      </v-app-bar-nav-icon>
       <v-toolbar-title class="headline text-uppercase">
         <span>AU.RU </span>
         <span class="font-weight-light">Коровы и быки</span>
@@ -26,7 +28,7 @@
         {{ user.name }}
       </div>
       <button @click="logout" v-if="hasRoles">Выход</button>
-    </v-toolbar>
+    </v-app-bar>
     <v-content>
       <transition name="slide">
         <transition name="page" mode="out-in">

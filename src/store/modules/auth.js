@@ -84,7 +84,7 @@ const actions = {
     });
   },
   //Registration
-  registration({ commit }, user) {
+  registration({ commit, dispatch }, user) {
     const { name, login, password } = user;
     return new Promise((resolve, reject) =>
       registration({
@@ -95,6 +95,11 @@ const actions = {
         .then(response => {
           // server create user
           commit("SET_USER_ID", response.data);
+          dispatch(
+            "info/setInfo",
+            { show: true, text: "Вы успешно зарегестрировались" },
+            { root: true }
+          );
           resolve();
         })
         .catch(error => {

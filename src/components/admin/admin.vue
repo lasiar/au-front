@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-data-table
-      hide-actions
+      hide-default-footer
       :headers="headers"
       :items="listUsers"
       class="elevation-1 ma-3"

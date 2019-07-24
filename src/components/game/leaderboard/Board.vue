@@ -1,11 +1,17 @@
 <template>
   <v-card class="elevation-10, ma-3">
     <v-card-title v-text="`Сложность ${length} цифры`"> </v-card-title>
-    <v-data-table hide-actions :headers="headers" :items="limitationList">
-      <template v-slot:items="props">
-        <td>{{ props.index + 1 }}</td>
-        <td>{{ props.item.name }}</td>
-        <td>{{ props.item.count_lap }}</td>
+    <v-data-table
+      hide-default-footer
+      :headers="headers"
+      :items="limitationList"
+    >
+      <template v-slot:body="{ items }">
+        <tr v-for="(row, i) in items" :key="i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.count_lap }}</td>
+        </tr>
       </template>
     </v-data-table>
   </v-card>
