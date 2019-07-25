@@ -14,12 +14,12 @@
       <v-flex xs5>
         <v-btn
           :disabled="isError"
+          class="elevation-3"
           :loading="loading"
           @click="sendGuess"
           depressed
         >
           Отгадать
-          <v-icon right>mdi-content-save</v-icon>
         </v-btn>
       </v-flex>
     </v-layout>

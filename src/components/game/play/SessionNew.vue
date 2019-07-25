@@ -9,7 +9,11 @@
       </v-text-field>
     </v-flex>
     <v-flex xs6>
-      <v-btn @click="newSessionHanding" :disabled="disabled">
+      <v-btn
+        class="elevation-3"
+        @click="newSessionHanding"
+        :disabled="disabled"
+      >
         Создать
       </v-btn>
     </v-flex>

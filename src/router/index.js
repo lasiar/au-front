@@ -4,7 +4,7 @@ import "nprogress/nprogress.css";
 import store from "../store/store";
 import NProgress from "nprogress"; // progress bar
 import "nprogress/nprogress.css"; // progress bar style
-import { getToken } from "../utils/auth"; // get token from cookie
+import { getToken, removeToken } from "../utils/auth"; // get token from cookie
 import getPageTitle from "../utils/get-page-title";
 
 Vue.use(Router);
@@ -37,6 +37,15 @@ export const asyncRoutes = [
     }
   },
   {
+    path: "/completed",
+    name: "completed",
+    component: () => import("../views/Completed"),
+    meta: {
+      title: "Завершенные сесии",
+      roles: ["user"]
+    }
+  },
+  {
     path: "/leaders",
     name: "leaders",
     component: () => import("../views/LeaderBoard"),
@@ -45,7 +54,6 @@ export const asyncRoutes = [
       roles: ["user"]
     }
   },
-
   {
     path: "/admin",
     name: "admin",
@@ -118,6 +126,9 @@ router.beforeEach(async (to, from, next) => {
           next({ ...to, replace: true });
           NProgress.done();
         } catch (error) {
+          // if back-end down
+          removeToken();
+          await store.dispatch("auth/logout");
           next("/login");
         }
       }

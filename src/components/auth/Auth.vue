@@ -1,7 +1,13 @@
 <template>
-  <v-layout align-center justify-center>
+  <v-layout class="mt-10" align-center justify-center>
     <v-flex xs12 sm8 md4>
-      <v-tabs v-model="disabled" color="primary" dark slider-color="white">
+      <v-tabs
+        class="elevation-10"
+        dark
+        background-color="indigo"
+        grow
+        slider-color="white"
+      >
         <v-tab> Вход </v-tab>
         <v-tab> Регистрация </v-tab>
         <v-tab-item>

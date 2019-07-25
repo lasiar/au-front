@@ -8,6 +8,7 @@ import {
 
 const state = {
   sessions: [],
+  notCompleted: [],
   history: [],
   leaderboard: []
 };
@@ -29,8 +30,8 @@ const actions = {
     );
   },
 
-  // Получение завершенных сессий
-  getCompletedSessions({ commit }) {
+  // Получение не завершенных сессий
+  getNoCompletedSessions({ commit }) {
     return new Promise((resolve, reject) =>
       getSessions({ completed: false })
         .then(response => {
@@ -43,6 +44,19 @@ const actions = {
     );
   },
 
+  // Получение  завершенных сессий
+  getCompletedSessions({ commit }) {
+    return new Promise((resolve, reject) =>
+      getSessions({ completed: true })
+        .then(response => {
+          commit("SET_NO_COMPLETED", response);
+          resolve(response);
+        })
+        .catch(error => {
+          reject(error);
+        })
+    );
+  },
   /** Получение истории сессии, с отсотированной датой
    *
    * @param commit
@@ -126,6 +140,9 @@ const actions = {
 const mutations = {
   SET_SESSIONS: (state, sessions) => {
     state.sessions = sessions;
+  },
+  SET_NO_COMPLETED: (state, notCompleted) => {
+    state.notCompleted = notCompleted;
   },
   PUSH_SESSIONS: (state, session) => {
     state.sessions.push(session);

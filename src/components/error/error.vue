@@ -15,7 +15,7 @@
 
       <v-card-actions>
         <v-spacer />
-        <v-btn color="primary" flat @click="close" @keydown.esc="close">
+        <v-btn color="primary" text @click="close" @keydown.esc="close">
           Закрыть
         </v-btn>
       </v-card-actions>
