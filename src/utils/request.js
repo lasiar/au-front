@@ -7,19 +7,6 @@ const service = axios.create({
   withCredentials: true // send cookies when cross-domain requests
 });
 
-// request interceptor
-service.interceptors.request.use(
-  config => {
-    // do something before request is sent
-    return config;
-  },
-  error => {
-    // do something with request isError
-    // console.log(isError); // for debug
-    return Promise.reject(error);
-  }
-);
-
 // response interceptor
 service.interceptors.response.use(
   /**
